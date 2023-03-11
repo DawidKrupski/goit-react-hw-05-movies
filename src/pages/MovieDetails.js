@@ -1,12 +1,10 @@
-import { MovieList } from 'components/MovieList/MovieList';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export const MovieDetails = ({ ApiKey }) => {
   const { moviesId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  const [movieImages, setMovieImages] = useState([]);
 
   const handleGetDetails = async () => {
     const url = `https://api.themoviedb.org/3/movie/${moviesId}?api_key=${ApiKey}&language=en-US`;
