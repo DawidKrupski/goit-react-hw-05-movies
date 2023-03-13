@@ -13,11 +13,9 @@ export const Reviews = ({ ApiKey }) => {
       const response = await axios.get(url);
       const data = response.data.results;
       setMovieReviews(data);
-      console.log(data);
     };
     handleGetReviews();
-    console.log(movieReviews);
-  }, [moviesId, ApiKey]);
+  }, [moviesId, ApiKey, movieReviews]);
 
   return (
     <ul>

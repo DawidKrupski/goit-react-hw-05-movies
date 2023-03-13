@@ -17,7 +17,7 @@ export const MovieDetails = ({ ApiKey }) => {
 
   useEffect(() => {
     handleGetDetails();
-  }, []);
+  }, [handleGetDetails]);
 
   return (
     <div>

@@ -15,7 +15,7 @@ export const Home = ({ ApiKey }) => {
 
   useEffect(() => {
     handleGetMovies();
-  }, []);
+  }, [handleGetMovies]);
 
   return (
     <div>

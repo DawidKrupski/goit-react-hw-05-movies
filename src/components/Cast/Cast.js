@@ -12,11 +12,9 @@ export const Cast = ({ ApiKey }) => {
       const response = await axios.get(url);
       const data = response.data.cast;
       setMovieCast(data);
-      console.log(data);
     };
     handleGetCast();
-    console.log(movieCast);
-  }, [moviesId, ApiKey]);
+  }, [moviesId, ApiKey, movieCast]);
 
   return (
     <ul>
