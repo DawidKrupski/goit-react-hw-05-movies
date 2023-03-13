@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, Link, Outlet } from 'react-router-dom';
 
 export const MovieDetails = ({ ApiKey }) => {
   const { moviesId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
+  const [movieGenres, setMovieGenres] = useState('');
 
   const handleGetDetails = async () => {
     const url = `https://api.themoviedb.org/3/movie/${moviesId}?api_key=${ApiKey}&language=en-US`;
     const response = await axios.get(url);
     const data = response.data;
     setMovieDetails(data);
-    console.log(data);
+    setMovieGenres(data.genres);
   };
 
   useEffect(() => {
@@ -26,7 +27,25 @@ export const MovieDetails = ({ ApiKey }) => {
             src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
           ></img>
           <h2>{movieDetails.title}</h2>
-          <p>{movieDetails.overview}</p>
+          <p>User Score: {Math.ceil(movieDetails.vote_average * 10)}%</p>
+          <div>
+            <h3>Overview</h3>
+            <p>{movieDetails.overview}</p>
+          </div>
+          <div>
+            <h3>Genres</h3>
+            <p>{movieGenres.map(genre => genre.name + ' ')}</p>
+          </div>
+          <ul>
+            Additional information
+            <li>
+              <Link to="Cast">Cast</Link>
+            </li>
+            <li>
+              <Link to="Reviews">Reviews</Link>
+            </li>
+            <Outlet />
+          </ul>
         </div>
       ) : (
         <div>Loading...</div>

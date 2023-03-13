@@ -9,14 +9,16 @@ export const MovieList = ({ movies }) => {
       <ul>
         {movies &&
           movies.map(movie => (
-            <Link to={`${movie.id}`} state={{ from: location }} key={movie.id}>
-              <li>
-                <div>
-                  <h2>
-                    {movie.title} {movie.id}
-                  </h2>
-                </div>
-              </li>
+            <Link
+              to={`/movies/${movie.id}`}
+              state={{ from: location }}
+              key={movie.id}
+            >
+              {movie.title ? (
+                <li>
+                  <h2>{movie.title}</h2>
+                </li>
+              ) : null}
             </Link>
           ))}
       </ul>

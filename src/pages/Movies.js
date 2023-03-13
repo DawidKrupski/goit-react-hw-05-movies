@@ -1,27 +1,41 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { MovieList } from 'components/MovieList/MovieList';
+import { Link, useLocation } from 'react-router-dom';
 
-const ApiKey = '0642b3e039f9cde93a3a88c569e802eb';
-
-export const Movies = () => {
-  const [movies, setMovies] = useState('');
-
-  const handleGetMovies = async () => {
-    const url = `https://api.themoviedb.org/3/trending/all/day?api_key=${ApiKey}`;
-    const response = await axios.get(url);
-    const data = response.data.results;
-    setMovies(data);
-    console.log(data);
-  };
+export const Movies = ({ ApiKey }) => {
+  const location = useLocation();
+  const [searchMovies, setSearchMovies] = useState([]);
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
-    handleGetMovies();
-  }, []);
+    const handleSearchMovies = async () => {
+      const url = `https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}&language=en-US&query=${query}&page=1&include_adult=false`;
+      const response = await axios.get(url);
+      const data = response.data.results;
+      setSearchMovies(data);
+      console.log(data);
+    };
+    handleSearchMovies();
+  }, [ApiKey, query]);
+
+  const handleInputChange = event => {
+    setQuery(event.target.value);
+  };
 
   return (
     <div>
-      <MovieList movies={movies} />
+      <input type="text" value={query} onChange={handleInputChange} />
+      <ul>
+        {searchMovies.map(movie => (
+          <Link
+            to={`/movies/${movie.id}`}
+            state={{ from: location }}
+            key={movie.id}
+          >
+            <li key={movie.id}>{movie.title}</li>
+          </Link>
+        ))}
+      </ul>
     </div>
   );
 };
