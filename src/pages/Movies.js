@@ -28,8 +28,10 @@ export const Movies = ({ ApiKey }) => {
       <ul>
         {searchMovies.map(movie => (
           <Link
-            to={`/movies/${movie.id}`}
-            state={{ from: location }}
+            to={{
+              pathname: `/movies/${movie.id}`,
+              state: { from: location, searchMovies },
+            }}
             key={movie.id}
           >
             <li key={movie.id}>{movie.title}</li>

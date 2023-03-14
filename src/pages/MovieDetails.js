@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 
 export const MovieDetails = ({ ApiKey }) => {
+  const location = useLocation();
+  const backLink = location.state?.from ?? '/';
   const { moviesId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const [movieGenres, setMovieGenres] = useState([]);
@@ -20,6 +22,7 @@ export const MovieDetails = ({ ApiKey }) => {
 
   return (
     <div>
+      <Link to={backLink}>&#8592; Go back</Link>;
       {movieDetails ? (
         <div>
           <img
