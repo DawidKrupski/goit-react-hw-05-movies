@@ -1,23 +1,23 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link, Outlet } from 'react-router-dom';
 
 export const MovieDetails = ({ ApiKey }) => {
   const { moviesId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  const [movieGenres, setMovieGenres] = useState('');
+  const [movieGenres, setMovieGenres] = useState([]);
 
-  const handleGetDetails = useCallback(async () => {
+  const handleGetDetails = async () => {
     const url = `https://api.themoviedb.org/3/movie/${moviesId}?api_key=${ApiKey}&language=en-US`;
     const response = await axios.get(url);
     const data = response.data;
     setMovieDetails(data);
     setMovieGenres(data.genres);
-  });
+  };
 
   useEffect(() => {
     handleGetDetails();
-  }, [handleGetDetails]);
+  }, [moviesId]);
 
   return (
     <div>
