@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useParams, Link, Outlet } from 'react-router-dom';
 
@@ -7,13 +7,13 @@ export const MovieDetails = ({ ApiKey }) => {
   const [movieDetails, setMovieDetails] = useState(null);
   const [movieGenres, setMovieGenres] = useState('');
 
-  const handleGetDetails = async () => {
+  const handleGetDetails = useCallback(async () => {
     const url = `https://api.themoviedb.org/3/movie/${moviesId}?api_key=${ApiKey}&language=en-US`;
     const response = await axios.get(url);
     const data = response.data;
     setMovieDetails(data);
     setMovieGenres(data.genres);
-  };
+  });
 
   useEffect(() => {
     handleGetDetails();
@@ -25,6 +25,7 @@ export const MovieDetails = ({ ApiKey }) => {
         <div>
           <img
             src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+            alt=""
           ></img>
           <h2>{movieDetails.title}</h2>
           <p>User Score: {Math.ceil(movieDetails.vote_average * 10)}%</p>
