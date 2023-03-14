@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 
 export const Movies = ({ ApiKey }) => {
   const location = useLocation();
@@ -13,7 +14,6 @@ export const Movies = ({ ApiKey }) => {
       const response = await axios.get(url);
       const data = response.data.results;
       setSearchMovies(data);
-      console.log(data);
     };
     handleSearchMovies();
   }, [ApiKey, query]);
@@ -30,11 +30,11 @@ export const Movies = ({ ApiKey }) => {
           <Link
             to={{
               pathname: `/movies/${movie.id}`,
-              state: { from: location, searchMovies },
+              state: { from: location },
             }}
-            key={movie.id}
+            key={nanoid()}
           >
-            <li key={movie.id}>{movie.title}</li>
+            <li key={nanoid()}>{movie.title}</li>
           </Link>
         ))}
       </ul>
