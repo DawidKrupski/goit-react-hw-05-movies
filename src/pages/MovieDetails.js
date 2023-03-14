@@ -7,17 +7,16 @@ export const MovieDetails = ({ ApiKey }) => {
   const [movieDetails, setMovieDetails] = useState(null);
   const [movieGenres, setMovieGenres] = useState([]);
 
-  const handleGetDetails = async () => {
-    const url = `https://api.themoviedb.org/3/movie/${moviesId}?api_key=${ApiKey}&language=en-US`;
-    const response = await axios.get(url);
-    const data = response.data;
-    setMovieDetails(data);
-    setMovieGenres(data.genres);
-  };
-
   useEffect(() => {
+    const handleGetDetails = async () => {
+      const url = `https://api.themoviedb.org/3/movie/${moviesId}?api_key=${ApiKey}&language=en-US`;
+      const response = await axios.get(url);
+      const data = response.data;
+      setMovieDetails(data);
+      setMovieGenres(data.genres);
+    };
     handleGetDetails();
-  }, [moviesId]);
+  }, [ApiKey, moviesId]);
 
   return (
     <div>
