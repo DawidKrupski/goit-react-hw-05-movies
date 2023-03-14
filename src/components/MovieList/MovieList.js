@@ -5,7 +5,7 @@ export const MovieList = ({ movies }) => {
 
   return (
     <>
-      <div>Tranding today</div>
+      <h1>Tranding today</h1>
       <ul>
         {movies &&
           movies.map(movie => (
@@ -16,7 +16,7 @@ export const MovieList = ({ movies }) => {
             >
               {movie.title ? (
                 <li>
-                  <h2>{movie.title}</h2>
+                  <h3>{movie.title}</h3>
                 </li>
               ) : null}
             </Link>

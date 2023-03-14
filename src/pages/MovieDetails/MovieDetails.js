@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import css from './MovieDetails.module.css';
 
 const MovieDetails = ({ ApiKey }) => {
   const location = useLocation();
@@ -22,25 +23,32 @@ const MovieDetails = ({ ApiKey }) => {
 
   return (
     <div>
-      <Link to={backLink}>&#8592; Go back</Link>;
+      <Link to={backLink} className={css.backBtn}>
+        &#8592; Go back
+      </Link>
+      ;
       {movieDetails ? (
         <div>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
-            alt=""
-          ></img>
-          <h2>{movieDetails.title}</h2>
-          <p>User Score: {Math.ceil(movieDetails.vote_average * 10)}%</p>
-          <div>
-            <h3>Overview</h3>
-            <p>{movieDetails.overview}</p>
+          <div className={css.details}>
+            <img
+              src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+              alt=""
+            ></img>
+            <div className={css.informations}>
+              <h2>{movieDetails.title}</h2>
+              <p>User Score: {Math.ceil(movieDetails.vote_average * 10)}%</p>
+              <div>
+                <h3>Overview</h3>
+                <p>{movieDetails.overview}</p>
+              </div>
+              <div>
+                <h3>Genres</h3>
+                <p>{movieGenres.map(genre => genre.name + ' ')}</p>
+              </div>
+            </div>
           </div>
-          <div>
-            <h3>Genres</h3>
-            <p>{movieGenres.map(genre => genre.name + ' ')}</p>
-          </div>
-          <ul>
-            Additional information
+          <h3>Additional information</h3>
+          <ul className={css.additional}>
             <li>
               <Link to="Cast">Cast</Link>
             </li>

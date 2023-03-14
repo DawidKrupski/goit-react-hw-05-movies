@@ -1,0 +1,26 @@
+.backBtn {
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.details {
+  display: flex;
+  margin-top: 20px;
+}
+
+.details > img {
+  height: 500px;
+}
+
+.informations {
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.additional {
+  font-size: 16px;
+}
+
+.additional a {
+  text-decoration: none;
+}
