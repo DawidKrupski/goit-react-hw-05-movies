@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const Cast = ({ ApiKey }) => {
+const Cast = ({ ApiKey }) => {
   const { moviesId } = useParams();
   const [movieCast, setMovieCast] = useState([]);
 
@@ -30,3 +30,5 @@ export const Cast = ({ ApiKey }) => {
     </ul>
   );
 };
+
+export default Cast;

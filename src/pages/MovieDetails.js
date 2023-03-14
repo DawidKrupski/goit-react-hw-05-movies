@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 
-export const MovieDetails = ({ ApiKey }) => {
+const MovieDetails = ({ ApiKey }) => {
   const location = useLocation();
   const backLink = location.state?.from ?? '/';
   const { moviesId } = useParams();
@@ -56,3 +56,5 @@ export const MovieDetails = ({ ApiKey }) => {
     </div>
   );
 };
+
+export default MovieDetails;
