@@ -7,12 +7,15 @@ export const Menu = () => {
   return (
     <>
       <nav className={css.menu}>
-        <Link to="/" className={location.pathname === '/' ? css.active : ''}>
+        <Link
+          to="/"
+          className={location.pathname === '/' ? css.active : css.visited}
+        >
           Home
         </Link>
         <Link
           to="/movies"
-          className={location.pathname === '/movies' ? css.active : ''}
+          className={location.pathname === '/movies' ? css.active : css.visited}
         >
           Movies
         </Link>

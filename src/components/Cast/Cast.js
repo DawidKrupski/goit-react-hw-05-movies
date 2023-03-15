@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import css from './Cast.module.css';
 
 const Cast = ({ ApiKey }) => {
   const { moviesId } = useParams();
@@ -20,20 +21,24 @@ const Cast = ({ ApiKey }) => {
   return (
     <ul>
       {movieCast.map(cast => (
-        <li key={nanoid()}>
+        <li className={css.cast} key={nanoid()}>
           {cast.profile_path ? (
             <img
+              className={css.castImg}
               src={`https://image.tmdb.org/t/p/w500${cast.profile_path}`}
               alt={`${cast.name} profile`}
             />
           ) : (
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/500px-No-Image-Placeholder.svg.png"
+              className={css.castImg}
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1000px-No-Image-Placeholder.svg.png"
               alt="Default profile"
             />
           )}
-          {cast.name}
-          <p>Character: {cast.character}</p>
+          <ul className={css.castName}>
+            <li> {cast.name} </li>
+            <p>Character: {cast.character}</p>
+          </ul>
         </li>
       ))}
     </ul>

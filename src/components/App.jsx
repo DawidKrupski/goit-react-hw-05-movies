@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Home } from 'pages/Home';
 import { Menu } from './Menu/Menu';
-import { Movies } from 'pages/Movies';
+import { Movies } from 'pages/Movie/Movies';
 import { lazy, Suspense } from 'react';
 
 const Cast = lazy(() => import('./Cast/Cast'));

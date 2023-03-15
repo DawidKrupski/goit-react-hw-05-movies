@@ -1,0 +1,15 @@
+.cast {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.castImg {
+  width: 100px;
+}
+
+.castName {
+  list-style-type: disc;
+  padding-left: 0px;
+  padding-top: 10px;
+}
