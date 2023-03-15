@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { Home } from 'pages/Home';
+import { Home } from 'pages/Home/Home';
 import { Menu } from './Menu/Menu';
 import { Movies } from 'pages/Movie/Movies';
 import { lazy, Suspense } from 'react';
