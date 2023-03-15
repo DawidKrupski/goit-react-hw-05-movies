@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 import css from './Movie.module.css';
 
 export const Movies = ({ ApiKey }) => {
@@ -54,4 +55,8 @@ export const Movies = ({ ApiKey }) => {
       </ul>
     </div>
   );
+};
+
+Movies.propTypes = {
+  ApiKey: PropTypes.string.isRequired,
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import css from './MovieDetails.module.css';
 
 const MovieDetails = ({ ApiKey }) => {
@@ -63,6 +64,10 @@ const MovieDetails = ({ ApiKey }) => {
       )}
     </div>
   );
+};
+
+MovieDetails.propTypes = {
+  ApiKey: PropTypes.string.isRequired,
 };
 
 export default MovieDetails;

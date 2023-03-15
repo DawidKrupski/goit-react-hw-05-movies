@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 import css from './Cast.module.css';
 
 const Cast = ({ ApiKey }) => {
@@ -43,6 +44,10 @@ const Cast = ({ ApiKey }) => {
       ))}
     </ul>
   );
+};
+
+Cast.propTypes = {
+  ApiKey: PropTypes.string.isRequired,
 };
 
 export default Cast;

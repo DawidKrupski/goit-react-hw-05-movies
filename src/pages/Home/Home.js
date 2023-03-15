@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { MovieList } from 'components/MovieList/MovieList';
+import PropTypes from 'prop-types';
 
 export const Home = ({ ApiKey }) => {
   const [movies, setMovies] = useState([]);
@@ -20,4 +21,8 @@ export const Home = ({ ApiKey }) => {
       <MovieList movies={movies} />
     </div>
   );
+};
+
+Home.propTypes = {
+  ApiKey: PropTypes.string.isRequired,
 };
