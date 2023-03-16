@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import css from './Cast.module.css';
-import { getMovieCast } from 'components/App';
+import { getMovieCast } from 'components/Api';
 
 const Cast = ({ ApiKey }) => {
   const { moviesId } = useParams();

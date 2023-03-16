@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
-import { getMovieDetails } from 'components/App';
+import { getMovieDetails } from 'components/Api';
 import css from './MovieDetails.module.css';
 
 const MovieDetails = () => {

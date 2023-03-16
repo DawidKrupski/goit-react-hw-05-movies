@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import { getMovieSearch } from 'components/App';
 import css from './Movie.module.css';
+import { getMovieSearch } from 'components/Api';
 
 const Movies = () => {
   const location = useLocation();
