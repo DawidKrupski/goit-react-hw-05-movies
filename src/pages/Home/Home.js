@@ -1,20 +1,17 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { MovieList } from 'components/MovieList/MovieList';
-import PropTypes from 'prop-types';
+import { getPopularMovies } from 'components/App';
 
-export const Home = ({ ApiKey }) => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     const handleGetMovies = async () => {
-      const url = `https://api.themoviedb.org/3/movie/popular?api_key=${ApiKey}&language=en-US&page=1`;
-      const response = await axios.get(url);
-      const data = response.data;
+      const data = await getPopularMovies();
       setMovies(data.results);
     };
     handleGetMovies();
-  }, [ApiKey]);
+  }, []);
 
   return (
     <div>
@@ -23,6 +20,4 @@ export const Home = ({ ApiKey }) => {
   );
 };
 
-Home.propTypes = {
-  ApiKey: PropTypes.string.isRequired,
-};
+export default Home;

@@ -1,9 +1,8 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types';
 import css from './Cast.module.css';
+import { getMovieCast } from 'components/App';
 
 const Cast = ({ ApiKey }) => {
   const { moviesId } = useParams();
@@ -11,9 +10,7 @@ const Cast = ({ ApiKey }) => {
 
   useEffect(() => {
     const handleGetCast = async () => {
-      const url = `https://api.themoviedb.org/3/movie/${moviesId}/credits?api_key=${ApiKey}&language=en-US`;
-      const response = await axios.get(url);
-      const data = response.data.cast;
+      const data = await getMovieCast(moviesId);
       setMovieCast(data);
     };
     handleGetCast();
@@ -44,10 +41,6 @@ const Cast = ({ ApiKey }) => {
       ))}
     </ul>
   );
-};
-
-Cast.propTypes = {
-  ApiKey: PropTypes.string.isRequired,
 };
 
 export default Cast;

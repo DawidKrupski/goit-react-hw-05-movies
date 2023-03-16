@@ -1,19 +1,16 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types';
+import { getMovieSearch } from 'components/App';
 import css from './Movie.module.css';
 
-export const Movies = ({ ApiKey }) => {
+const Movies = () => {
   const location = useLocation();
   const [searchMovies, setSearchMovies] = useState([]);
   const [query, setQuery] = useState('');
 
   const handleSearchMovies = async () => {
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}&language=en-US&query=${query}&page=1&include_adult=false`;
-    const response = await axios.get(url);
-    const data = response.data.results;
+    const data = await getMovieSearch(query);
     setSearchMovies(data);
   };
 
@@ -57,6 +54,4 @@ export const Movies = ({ ApiKey }) => {
   );
 };
 
-Movies.propTypes = {
-  ApiKey: PropTypes.string.isRequired,
-};
+export default Movies;

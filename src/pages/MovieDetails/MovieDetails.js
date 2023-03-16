@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { getMovieDetails } from 'components/App';
 import css from './MovieDetails.module.css';
 
-const MovieDetails = ({ ApiKey }) => {
+const MovieDetails = () => {
   const location = useLocation();
   const backLink = location.state?.from ?? '/';
   const { moviesId } = useParams();
@@ -13,21 +12,19 @@ const MovieDetails = ({ ApiKey }) => {
 
   useEffect(() => {
     const handleGetDetails = async () => {
-      const url = `https://api.themoviedb.org/3/movie/${moviesId}?api_key=${ApiKey}&language=en-US`;
-      const response = await axios.get(url);
-      const data = response.data;
+      const data = await getMovieDetails(moviesId);
       setMovieDetails(data);
       setMovieGenres(data.genres);
     };
     handleGetDetails();
-  }, [ApiKey, moviesId]);
+  }, [moviesId]);
 
   return (
     <div>
       <Link to={backLink} className={css.backBtn}>
         &#8592; Go back
       </Link>
-      ;
+
       {movieDetails ? (
         <div>
           <div className={css.details}>
@@ -64,10 +61,6 @@ const MovieDetails = ({ ApiKey }) => {
       )}
     </div>
   );
-};
-
-MovieDetails.propTypes = {
-  ApiKey: PropTypes.string.isRequired,
 };
 
 export default MovieDetails;
