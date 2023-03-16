@@ -1,6 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import axios from 'axios';
-import PropTypes from 'prop-types';
 import { Menu } from './Menu/Menu';
 import { lazy, Suspense } from 'react';
 
@@ -29,8 +27,4 @@ export const App = () => {
       </Suspense>
     </div>
   );
-};
-
-App.propTypes = {
-  ApiKey: PropTypes.string.isRequired,
 };
