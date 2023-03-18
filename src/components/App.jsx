@@ -16,7 +16,6 @@ export const App = () => {
       </nav>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="goit-react-hw-05-movies/" element={<Home />} />
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<Movies />}></Route>
           <Route path="/movies/:moviesId" element={<MovieDetails />}>

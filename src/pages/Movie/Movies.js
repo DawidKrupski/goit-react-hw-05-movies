@@ -26,7 +26,7 @@ const Movies = () => {
   };
 
   return (
-    <div>
+    <div className={css.search}>
       <input
         className={css.input}
         type="text"
@@ -34,7 +34,9 @@ const Movies = () => {
         onChange={handleInputChange}
         onKeyDown={handleInputChange}
       />
-      <button onClick={handleButtonClick}>Search</button>
+      <button className={css.searchBtn} onClick={handleButtonClick}>
+        Search
+      </button>
       <ul>
         {searchMovies.map(movie => (
           <Link

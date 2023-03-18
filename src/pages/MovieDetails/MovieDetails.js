@@ -50,7 +50,7 @@ const MovieDetails = () => {
             <li>
               <Link to="Cast">Cast</Link>
             </li>
-            <li>
+            <li className={css.lastLink}>
               <Link to="Reviews">Reviews</Link>
             </li>
             <Outlet />

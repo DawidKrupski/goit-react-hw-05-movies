@@ -15,7 +15,7 @@ export const Menu = () => {
         </Link>
         <Link
           to="/movies"
-          className={location.pathname === '/movies' ? css.active : css.visited}
+          className={location.pathname === '/' ? css.visited : css.active}
         >
           Movies
         </Link>
