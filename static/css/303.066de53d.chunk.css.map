@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/303.066de53d.chunk.css","mappings":"AAAA,qBACE,YACF,CAEA,oBAEE,WAAY,CADZ,WAEF,CAEA,wBACE,cACF","sources":["pages/Movie/Movie.module.css"],"sourcesContent":[".search {\n  display: flex;\n}\n\n.input {\n  width: 300px;\n  height: 26px;\n}\n\n.searchBtn {\n  font-size: 20px;\n}\n"],"names":[],"sourceRoot":""}
